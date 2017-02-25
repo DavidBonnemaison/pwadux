@@ -13,6 +13,7 @@ const jsSourcePath = path.join(__dirname, './source/js');
 const buildPath = path.join(__dirname, './build');
 const imgPath = path.join(__dirname, './source/assets/img');
 const sourcePath = path.join(__dirname, './source');
+const iconPath = path.join(__dirname, './source/assets/icon');
 
 // Common plugins
 const plugins = [
@@ -59,6 +60,11 @@ const rules = [
   {
     test: /\.(png|gif|jpg|svg)$/,
     include: imgPath,
+    use: 'url-loader?limit=20480&name=assets/[name]-[hash].[ext]',
+  },
+  {
+    test: /\.(png|xml|ico|svg|json)$/,
+    include: iconPath,
     use: 'url-loader?limit=20480&name=assets/[name]-[hash].[ext]',
   },
 ];

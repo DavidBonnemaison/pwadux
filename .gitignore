@@ -1,8 +1,11 @@
 .DS_STORE
 node_modules
-build
+build/assets/
+build/index.html
+build/style-*.css
+build/vendor-*.js
+build/app-*.js
 .module-cache
 *.log*
 _nogit
-.idea
 yarn.lock
