@@ -145,7 +145,6 @@ module.exports = {
       'babel-polyfill',
       'es6-promise',
       'immutable',
-      'isomorphic-fetch',
       'react-dom',
       'react-redux',
       'react-router',
