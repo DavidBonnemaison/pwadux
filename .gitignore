@@ -6,6 +6,7 @@ build/index.html
 build/style-*.css
 build/vendor-*.js
 build/app-*.js
+build/sw.js
 .module-cache
 *.log*
 _nogit

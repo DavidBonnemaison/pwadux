@@ -3,19 +3,15 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
-import 'babel-polyfill';
-import createLogger from 'redux-logger';
-import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 
 import rootReducer from 'reducers';
 import Routes from 'routes';
 import DevTools from 'dev/redux-dev-tools-exports';
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+import createLogger from 'redux-logger';
 
 // Load SCSS
 import '../scss/app.scss';
-
-// Offline management
-OfflinePluginRuntime.install();
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -25,6 +21,9 @@ let store = null;
 if (isProduction) {
   // In production adding only thunk middleware
   const middleware = applyMiddleware(thunk);
+
+  // Offline management
+  OfflinePluginRuntime.install();
 
   store = createStore(
     rootReducer,
@@ -45,7 +44,6 @@ if (isProduction) {
     enhancer
   );
 }
-
 
 // Render it to DOM
 ReactDOM.render(

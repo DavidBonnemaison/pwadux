@@ -142,7 +142,6 @@ module.exports = {
   entry: {
     js: './index.js',
     vendor: [
-      'babel-polyfill',
       'es6-promise',
       'react-dom',
       'react-redux',
