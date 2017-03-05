@@ -54,6 +54,7 @@
     "es6-promise": "^3.1.2",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
+    "offline-plugin": "^4.6.1",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-redux": "^4.4.0",
@@ -68,5 +69,7 @@
   },
   "author": "David Bonnemaison",
   "homepage": "https://github.com/crealpha/pwadux",
-  "prepush" : [ "npm run lint-break-on-errors --silent" ]
+  "prepush": [
+    "npm run lint-break-on-errors --silent"
+  ]
 }

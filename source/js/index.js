@@ -5,6 +5,8 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import 'babel-polyfill';
 import logger from 'dev/logger';
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
 
 import rootReducer from 'reducers';
 import Routes from 'routes';
