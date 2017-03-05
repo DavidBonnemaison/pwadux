@@ -3,12 +3,12 @@ import {bindActionCreators} from 'redux';
 import * as actions from 'actions/app';
 import HomeView from 'views/Home'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({app}) => {
   return {
-    asyncData: state.app.get('asyncData'),
-    asyncError: state.app.get('asyncError'),
-    asyncLoading: state.app.get('asyncLoading'),
-    counter: state.app.get('counter')
+    asyncData: app.asyncData,
+    asyncError: app.asyncError,
+    asyncLoading: app.asyncLoading,
+    counter: app.counter
   }
 };
 
@@ -19,7 +19,14 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const Home = props => {
-  const {actions} = props;
+  const {
+    actions, 
+    app,
+    asyncData,
+    asyncError,
+    asyncLoading,
+    counter
+  } = props;
   const handleAsyncButtonClick = () => actions.testAsync();
   const handleTestButtonClick = () => actions.testAction();
   return HomeView({...props, handleAsyncButtonClick, handleTestButtonClick})

@@ -4,16 +4,18 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import 'babel-polyfill';
-import logger from 'dev/logger';
+import createLogger from 'redux-logger';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
-OfflinePluginRuntime.install();
 
 import rootReducer from 'reducers';
 import Routes from 'routes';
-import DevTools from 'dev/redux-dev-tools';
+import DevTools from 'dev/redux-dev-tools-exports';
 
 // Load SCSS
 import '../scss/app.scss';
+
+// Offline management
+OfflinePluginRuntime.install();
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -31,6 +33,7 @@ if (isProduction) {
 } else {
   // In development mode beside thunk
   // logger and DevTools are added
+  const logger = createLogger();
   const middleware = applyMiddleware(thunk, logger);
   const enhancer = compose(
     middleware,

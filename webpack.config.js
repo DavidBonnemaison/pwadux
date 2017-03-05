@@ -144,7 +144,6 @@ module.exports = {
     vendor: [
       'babel-polyfill',
       'es6-promise',
-      'immutable',
       'react-dom',
       'react-redux',
       'react-router',

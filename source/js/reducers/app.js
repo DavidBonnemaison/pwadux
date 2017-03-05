@@ -1,50 +1,43 @@
-import {Map} from 'immutable';
-
 import {
   TEST_ACTION,
   TEST_ASYNC_ACTION_START,
   TEST_ASYNC_ACTION_ERROR,
-  TEST_ASYNC_ACTION_SUCCESS,
+  TEST_ASYNC_ACTION_SUCCESS
 } from 'actions/app';
 
-const initialState = Map({
+const initialState = {
   counter: 0,
   asyncLoading: false,
   asyncError: null,
-  asyncData: null,
-});
-
-const actionsMap = {
-  [TEST_ACTION]: (state) => {
-    const counter = state.get('counter') + 1;
-
-    return state.merge({
-      counter,
-    });
-  },
-
-  // Async action
-  [TEST_ASYNC_ACTION_START]: (state) => {
-    return state.merge({
-      asyncLoading: true,
-      asyncError: null,
-    });
-  },
-  [TEST_ASYNC_ACTION_ERROR]: (state, action) => {
-    return state.merge({
-      asyncLoading: false,
-      asyncError: action.data,
-    });
-  },
-  [TEST_ASYNC_ACTION_SUCCESS]: (state, action) => {
-    return state.merge({
-      asyncLoading: false,
-      asyncData: action.data,
-    });
-  },
+  asyncData: null
 };
 
-export default function reducer(state = initialState, action = {}) {
-  const fn = actionsMap[action.type];
-  return fn ? fn(state, action) : state;
+
+export default function app(state = initialState, action = {}) {
+  const { type } = action;
+  switch (type) {
+    case TEST_ACTION:
+      return {...state, counter: state.counter + 1 };
+    case TEST_ASYNC_ACTION_START:
+      return {
+        ...state,
+        asyncLoading: true,
+        asyncError: null
+      };
+    case TEST_ASYNC_ACTION_SUCCESS:
+      return {
+        ...state,
+        asyncLoading: false,
+        asyncData: action.data,
+        asyncError: null
+      };
+    case TEST_ASYNC_ACTION_ERROR:
+      return {
+        ...state,
+        asyncLoading: false,
+        asyncError: action.data
+      };
+    default:
+      return state;
+  }
 }
