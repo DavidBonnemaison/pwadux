@@ -6,13 +6,13 @@ With all the Progressive Web App hype, I was looking for a good starter project 
 
 ## Goals & to do:
 ![image](https://cloud.githubusercontent.com/assets/5593234/23587197/5f7676e0-01a7-11e7-8033-7d67a93cfd08.png)
-- 100/100 Lightouse score (64/100 right now)
+- 100/100 Lightouse score (79/100 right now)
   - [x] Mobile friendly
-  - [ ] Service worker : offline management
+  - [x] Service worker : offline management
   - [ ] Page load performance
-  - [ ] Content when javascript is disabled
-  - [ ] Add to homescreen
-  - [ ] Custom splash screen
-  - [ ] Address bar matches brand colors
+  - [x] Content when javascript is disabled
+  - [x] Add to homescreen
+  - [x] Custom splash screen
+  - [x] Address bar matches brand colors
 - [x] Webpack 2, React, Redux
 - [x] Functionnal React, no stateful class
